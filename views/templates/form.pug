@@ -1,0 +1,91 @@
+section(class='form')
+    h2=data.primary_name
+    form( action="http://localhost:8080/birds/edit-bird", method="post" encType="multipart/form-data" )
+        input(type="hidden" name="id" value=data._id)
+        fieldset
+            legend="Common Names"
+            label(for="primary_name")="Primary Name"
+            input(type="text" name="primary_name" value=data.primary_name required)
+            label(for="english_name")="English Name"
+            input(type="text" name="english_name" value=data.english_name required)
+            label(for="other_names")="Other Names"
+            textarea(name="other_names" rows="10" cols="50")=data.other_names
+        fieldset 
+            legend="Taxonomy"
+            label(for="scientific_name")="Scientific Name"
+            input(type="text" name="scientific_name" value=data.scientific_name required="")
+            label(for="order")="Order"
+            input(type="text" name="order" value=data.order required="")
+            label(for="family")="Family"
+            input(type="text" name="family" value=data.family required="")
+        fieldset 
+            legend="Size"
+            label(for="length")="Length (cm)"
+            input( type="number" name="length" value=data.size.length.value)
+            label(for="weight")="Weight (g)"
+            input(type="number" name="weight" value=data.size.weight.value)
+        fieldset 
+            legend="Conservation"
+            label(for="status")="Status"
+            select(name="status" id="status")
+                if data.status==="Not Threatened"
+                    option(selected="selected")="Not Threatened"
+                else
+                    option="Not Threatened"
+
+                if data.status==="Naturally Uncommon"
+                    option(selected="selected")="Naturally Uncommon"
+                else
+                    option="Naturally Uncommon"
+
+                if data.status==="Relict"
+                    option(selected="selected")="Relict"
+                else
+                    option="Relict"
+
+                if data.status==="Recovering"
+                    option(selected="selected")="Recovering"
+                else
+                    option="Recovering"
+
+                if data.status==="Declining"
+                    option(selected="selected")="Declining"
+                else
+                    option="Declining"
+
+                if data.status==="Nationally Increasing"
+                    option(selected="selected")="Nationally Increasing"
+                else
+                    option="Nationally Increasing"
+
+                if data.status==="Nationally Vulnerable"
+                    option(selected="selected")="Nationally Vulnerable"
+                else
+                    option="Nationally Vulnerable"
+
+                if data.status==="Nationally Endangered"
+                    option(selected="selected")="Nationally Endangered"
+                else
+                    option="Nationally Endangered"
+
+                if data.status==="Nationally Critical"
+                    option(selected="selected")="Nationally Critical"
+                else
+                    option="Nationally Critical"
+
+                if data.status==="Data Deficient"
+                    option(selected="selected")="Data Deficient"
+                else
+                    option="Data Deficient"
+        fieldset 
+            legend="Photo"
+            label(for="photo_credit")="Photo Credit"
+            input(type="text" name="photo_credit" value=data.photo.credit required="")
+            label(for="photo_upload")="Upload New Photo"
+            input(type="file" name="photo_upload" id="photo_upload")
+            label(for="photo_source")="Photo Preview"
+            img(id="upload_preview" src=`/images/${data.photo.source}` alt="Photo of "+ `${data.primary_name}`)
+            input(id="upload_source" type="text" name="photo_source" value=data.photo.source readonly="readonly")
+        button(type='submit')="Save Bird"
+    
+                

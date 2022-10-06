@@ -1,0 +1,32 @@
+section(class='card')
+    div(class="card-image")
+        img(src=`/images/${data.photo.source}` alt=`Photo of ${data.primary_name}`)
+        div(class="card-title")
+            p(lang="mi") #{data.primary_name}
+            span Photo by #{data.photo.credit}
+        div(class=`circle ${data.status.replace(' ', '-')}`)
+    div(class="card-content")
+        h2(class="card-title") 
+        ul
+            li
+                b Scientific
+                span=data.scientific_name
+            li
+                b Family
+                span=data.family
+            li
+                b Order 
+                span=data.order
+            li
+                b Status 
+                span=data.status
+            li
+                b Length 
+                span=`${data.size.length.value} ${data.size.length.units}`
+            li
+                b Weight 
+                span=`${data.size.weight.value} ${data.size.weight.units}` 
+            a(href='/birds/'+`${data._id}`+"/update")
+                button="Update"
+            form( action="http://localhost:8080/birds/"+`${data._id}`+"/delete-message", method="post" )
+                button="Delete"
