@@ -28,5 +28,5 @@ section(class='card')
                 span=`${data.size.weight.value} ${data.size.weight.units}` 
             a(href='/birds/'+`${data._id}`+"/update")
                 button="Update"
-            form( action="http://localhost:8080/birds/"+`${data._id}`+"/delete-message", method="post" )
+            form( action="/birds/"+`${data._id}`+"/delete-message", method="post" )
                 button="Delete"

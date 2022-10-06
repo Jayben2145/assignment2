@@ -1,6 +1,6 @@
 section(class='form')
     h2=data.primary_name
-    form( action="http://localhost:8080/birds/edit-bird", method="post" encType="multipart/form-data" )
+    form( action="/birds/edit-bird", method="post" encType="multipart/form-data" )
         input(type="hidden" name="id" value=data._id)
         fieldset
             legend="Common Names"
